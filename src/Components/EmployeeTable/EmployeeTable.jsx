@@ -1,9 +1,11 @@
 import React from 'react'
 import { Table, Column, Cell } from 'fixed-data-table-2';
 import 'fixed-data-table-2/dist/fixed-data-table.css';
+import InputCell from './InputCell';
+import StatusModal from './StatusModal'
 
-const EmployeeTable = ({data}) => {
-
+const EmployeeTable = ({data, addName, addProject, changeStatus}) => {
+    const [isClicked, setClick] = React.useState(false)
     return (
         <div style={{ display: 'flex' }}>
             <Table
@@ -15,8 +17,8 @@ const EmployeeTable = ({data}) => {
                 <Column
                     header={<Cell>Имя</Cell>}
                     cell={({ rowIndex, ...props }) => (
-                        <Cell {...props}>
-                            {data[rowIndex].name}
+                        <Cell {...props} style = {{position: 'relative'}}>
+                            <InputCell text = {data[rowIndex].name} inputHandler={addName} index={rowIndex}/>
                         </Cell>
                     )}
                     width={300}
@@ -25,7 +27,7 @@ const EmployeeTable = ({data}) => {
                     header={<Cell>Проект</Cell>}
                     cell={({ rowIndex, ...props }) => (
                         <Cell {...props}>
-                            {data[rowIndex].project}
+                            <InputCell text = {data[rowIndex].project} inputHandler={addProject} index={rowIndex}/>
                         </Cell>
                     )}
                     width={300}
@@ -33,8 +35,8 @@ const EmployeeTable = ({data}) => {
                 <Column
                     header={<Cell>Статус</Cell>}
                     cell={({ rowIndex, ...props }) => (
-                        <Cell {...props}>
-                            {data[rowIndex].status}
+                        <Cell {...props} text = {data[rowIndex].status} onClick = {() => setClick(!isClicked)} id={rowIndex}>
+                             {!isClicked ? data[rowIndex].status : <StatusModal inputHandler = {changeStatus}/>}
                         </Cell>
                     )}
                     width={300}

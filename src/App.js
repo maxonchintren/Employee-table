@@ -1,61 +1,73 @@
 import React from 'react';
-import './App.css';
 
 import EmployeeTable from './Components/EmployeeTable/EmployeeTable';
 import MonthTable from './Components/MonthTable/MonthTable';
+import Button from './Components/Button'
 
-import calendar from './calendar'
+import initialData from './initial-data'
+
+import {addEmployee} from './BtnHandlers/handlers'
 
 function App() {
-  console.log(calendar)
-  const data = [
-    {
-      name: 'Maxim Moiseev',
-      project: 'Employee Table',
-      status: 'Start',
-      months: {
-        January: {
-          business: [40, 20, 40 ,30],
-          isConfirmed: true 
-          // true = confirmed, false = not confirmed, null = downtime
-        },
-        March: {
-          business: [0, 0, 0 ,0],
-          isConfirmed: null 
-          // true = confirmed, false = not confirmed, null = downtime
+
+  let date = new Date()
+
+  const [employees, setEmployees] = React.useState(initialData.data)
+
+  function addBtnHandler() {
+    return addEmployee(employees, setEmployees)
+  }
+
+  function addName(value, id) {
+    setEmployees(
+      employees.map((employee, index) => {
+        if (index === +id) {
+          employee.name = value
         }
-      }
-    },
-    {
-      name: 'Valery Pronin',
-      project: 'Employee Table',
-      status: 'Going',
-      months: {
-        January: {
-          business: [20, 40, 40 ,40],
-          isConfirmed: true 
-          // true = confirmed, false = not confirmed, null = downtime
-        },
-      }
-    },
-    {
-      name: 'Alina Deryabina',
-      project: 'Being Cutie',
-      status: 'Doing very well',
-      months: {
-        January: {
-          business: [],
-          isConfirmed: null
+        return employee
+      })
+    )
+    console.log(employees)
+}
+
+  function addProject(value, id) {
+    setEmployees(
+      employees.map((employee, index) => {
+        if (index === +id) {
+          employee.project = value
         }
-      }
-    }
-  ]
+        return employee
+      })
+    )
+  }
+
+  function changeStatus(event) {
+    let targetId = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id
+    let newStatus = event.target.textContent
+    setEmployees(
+      employees.map((employee, index) => {
+        if (index === +targetId) {
+          employee.status = newStatus
+        }
+        return employee
+      })
+    )
+  }
 
   return (
-    <div style={{ display: 'flex' }}>
-      <EmployeeTable data={data} />
-      <MonthTable data={data} calendar ={calendar} month = {'January'}/>
-
+    
+    <div style={{ display: 'flex' }} id = 'main-wrapper'>
+      <EmployeeTable data={employees} addName = {addName} addProject = {addProject} changeStatus = {changeStatus}/>
+      {Object.keys(initialData.calendar).splice(date.getMonth()).map((month, index) => {
+        return (
+          <MonthTable data={employees} 
+          calendar={initialData.calendar} 
+          month={month} 
+          key ={index}
+          />
+        )
+      })}
+      <Button text = 'Добавить сотрудника' type = 'addEmp' handler={addBtnHandler}></Button>
     </div>
   );
 }
