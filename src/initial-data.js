@@ -113,8 +113,8 @@ const initialData = {
             }
         },
         {
-            name: 'Alina Deryabina',
-            project: 'Being Cutie',
+            name: 'Darya Dushkina',
+            project: 'Being nice',
             status: 'Завершается',
             months: {
                 January: {
@@ -212,7 +212,7 @@ const initialData = {
         },
         November: {
             name: 'Ноябрь',
-            weeks: [45, 45, 45, 48]
+            weeks: [45, 46, 47, 48]
         },
         December: {
             name: 'Декабрь',

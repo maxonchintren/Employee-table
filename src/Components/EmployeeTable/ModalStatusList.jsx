@@ -47,7 +47,7 @@ const styles = {
 }
 
 
-const Modal = ({ statuses, closeFunc, addFunc, deleteFunc }) => {
+const ModalStatusList = ({ statuses, closeFunc, addFunc, deleteFunc }) => {
     const [value, setValue] = React.useState('')
 
     return (
@@ -73,4 +73,4 @@ const Modal = ({ statuses, closeFunc, addFunc, deleteFunc }) => {
     )
 }
 
-export default Modal
+export default ModalStatusList

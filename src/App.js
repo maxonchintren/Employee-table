@@ -3,16 +3,18 @@ import React from 'react';
 import EmployeeTable from './Components/EmployeeTable/EmployeeTable';
 import MonthTable from './Components/MonthTable/MonthTable';
 import Button from './Components/Button'
+import ModalStatusList from './Components/EmployeeTable/ModalStatusList';
+import ModalColorList from './Components/MonthTable/ModalColorList'
 
 import initialData from './initial-data'
 
 import { addEmployee } from './Utilities/handlers'
-import Modal from './Components/Modal';
 
 function App() {
 
   let date = new Date()
-  const [isClicked, setClick] = React.useState(false)
+  const [isClickedStatus, setClickStatus] = React.useState(false)
+  const [isClickedColor, setClickColor] = React.useState(false)
   const [statuses, setStatuses] = React.useState(initialData.statuses)
   const [employees, setEmployees] = React.useState(initialData.data)
   const [colors, setColors] = React.useState(initialData.colors)
@@ -90,6 +92,43 @@ function App() {
     )
   }
 
+  function changeColor(index, month, event) {
+    let value = event.target.textContent
+    setEmployees(
+      employees.map((employee, i) => {
+        if (i === index) {
+          employee.months[month].isConfirmed = value
+        }
+        return employee
+      })
+    )
+  }
+
+  function addColorInList(value, colorName, setFunc) {
+    if (value.trim()) {
+      setColors(colors.concat([{name: colorName, color: value.split(',')}]))
+      setFunc('')
+    }
+  }
+
+  function deleteColorInList(index) {
+    if (colors.length === 1) {
+      alert('Должен остаться как минимум 1 цвет!')
+      return false
+    }
+    if (colors.length === 5) {
+      alert('Максимум 5 цветов!')
+    }
+    setColors(
+      colors.filter((color, i) => {
+        if (i === index) {
+          return false
+        }
+        return true
+      })
+    )
+  }
+
   return (
 
     <div style={{ display: 'flex' }}>
@@ -102,6 +141,7 @@ function App() {
             key={index}
             addTimeSpent={addTimeSpent}
             colors = {colors}
+            changeColor = {changeColor}
           />
         )
       })}
@@ -109,11 +149,17 @@ function App() {
       {/* <div onClick = {() => setClick(!isClicked)}>
         {!isClicked ? <Button text='Список статусов' type='editStatus' handler={editStatusArr}></Button> : <Modal statuses = {statuses}/>}
       </div> */}
-        <Button text='Список статусов' type='editStatus' handler = {() => setClick(!isClicked)}></Button>
-        {!isClicked ? '' : <Modal statuses = {statuses} 
-        closeFunc = {() => setClick(!isClicked)} 
+        <Button text='Список статусов' type='editStatus' handler = {() => setClickStatus(!isClickedStatus)}></Button>
+        {!isClickedStatus ? '' : <ModalStatusList statuses = {statuses} 
+        closeFunc = {() => setClickStatus(!isClickedStatus)} 
         addFunc={addStatusInList}
         deleteFunc = {deleteStatusInList}
+        />}
+        <Button text='Список цветов' type ='editColor' handler = {() => setClickColor(!isClickedColor)}/>
+        {!isClickedColor ? '' : <ModalColorList colors = {colors}
+        closeFunc = {() => setClickColor(!isClickedColor)}
+        addFunc = {addColorInList}
+        deleteFunc = {deleteColorInList}
         />}
     </div>
   );

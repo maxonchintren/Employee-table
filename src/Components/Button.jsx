@@ -16,6 +16,14 @@ const style = {
         left: '270px',
         padding: '10px 20px',
         cursor: 'pointer'
+    },
+    editColor: {
+        fontSize: '20px',
+        position: 'fixed',
+        bottom: '20px',
+        left: '475px',
+        padding: '10px 20px',
+        cursor: 'pointer'
     }
     
 }
