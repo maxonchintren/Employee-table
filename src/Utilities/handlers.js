@@ -62,9 +62,25 @@ function addEmployee(array, setFunc) {
     )
 }
 
-function editStatusArr() {
+async function getData(setFunc1, setFunc2, setFunc3) {
+    const apiCall = await fetch(`https://employee-table-fa1eb.firebaseio.com/initialData.json`);
+    const response = await apiCall.json()
+    let key = Object.keys(response)[0]
+    setFunc1(response[key].data)
+    setFunc2(response[key].colors)
+    setFunc3(response[key].statuses)
+  }
 
+function postData() {
+        const data = {}
+        fetch('https://employee-table-fa1eb.firebaseio.com/initialData.json', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json' 
+                }
+            })
+            
 }
 
-
-export {addEmployee, editStatusArr}
+export {addEmployee, getData, postData}

@@ -8,16 +8,21 @@ import ModalColorList from './Components/MonthTable/ModalColorList'
 
 import initialData from './initial-data'
 
-import { addEmployee } from './Utilities/handlers'
+import { addEmployee, getData, postData } from './Utilities/handlers'
 
 function App() {
 
   let date = new Date()
+  const [preventLoop, setLoop] = React.useState(0)
   const [isClickedStatus, setClickStatus] = React.useState(false)
   const [isClickedColor, setClickColor] = React.useState(false)
   const [statuses, setStatuses] = React.useState(initialData.statuses)
   const [employees, setEmployees] = React.useState(initialData.data)
   const [colors, setColors] = React.useState(initialData.colors)
+
+  React.useEffect(() => {
+    getData(setEmployees, setColors, setStatuses)
+  },[preventLoop])
 
   function addBtnHandler() {
     return addEmployee(employees, setEmployees)
@@ -106,7 +111,7 @@ function App() {
 
   function addColorInList(value, colorName, setFunc) {
     if (value.trim()) {
-      setColors(colors.concat([{name: colorName, color: value.split(',')}]))
+      setColors(colors.concat([{ name: colorName, color: value.split(',') }]))
       setFunc('')
     }
   }
@@ -128,7 +133,6 @@ function App() {
       })
     )
   }
-
   return (
 
     <div style={{ display: 'flex' }}>
@@ -140,27 +144,27 @@ function App() {
             month={month}
             key={index}
             addTimeSpent={addTimeSpent}
-            colors = {colors}
-            changeColor = {changeColor}
+            colors={colors}
+            changeColor={changeColor}
           />
         )
       })}
-        <Button text='Добавить сотрудника' type='addEmp' handler={addBtnHandler}></Button>
+      <Button text='Добавить сотрудника' type='addEmp' handler={addBtnHandler}></Button>
       {/* <div onClick = {() => setClick(!isClicked)}>
         {!isClicked ? <Button text='Список статусов' type='editStatus' handler={editStatusArr}></Button> : <Modal statuses = {statuses}/>}
       </div> */}
-        <Button text='Список статусов' type='editStatus' handler = {() => setClickStatus(!isClickedStatus)}></Button>
-        {!isClickedStatus ? '' : <ModalStatusList statuses = {statuses} 
-        closeFunc = {() => setClickStatus(!isClickedStatus)} 
+      <Button text='Список статусов' type='editStatus' handler={() => setClickStatus(!isClickedStatus)}></Button>
+      {!isClickedStatus ? '' : <ModalStatusList statuses={statuses}
+        closeFunc={() => setClickStatus(!isClickedStatus)}
         addFunc={addStatusInList}
-        deleteFunc = {deleteStatusInList}
-        />}
-        <Button text='Список цветов' type ='editColor' handler = {() => setClickColor(!isClickedColor)}/>
-        {!isClickedColor ? '' : <ModalColorList colors = {colors}
-        closeFunc = {() => setClickColor(!isClickedColor)}
-        addFunc = {addColorInList}
-        deleteFunc = {deleteColorInList}
-        />}
+        deleteFunc={deleteStatusInList}
+      />}
+      <Button text='Список цветов' type='editColor' handler={() => setClickColor(!isClickedColor)} />
+      {!isClickedColor ? '' : <ModalColorList colors={colors}
+        closeFunc={() => setClickColor(!isClickedColor)}
+        addFunc={addColorInList}
+        deleteFunc={deleteColorInList}
+      />}
     </div>
   );
 }
