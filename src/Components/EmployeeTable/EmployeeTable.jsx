@@ -1,11 +1,12 @@
 import React from 'react'
 import { Table, Column, Cell } from 'fixed-data-table-2';
 import 'fixed-data-table-2/dist/fixed-data-table.css';
-import InputCell from './InputCell';
+import InputCell from '../UIKit/InputCell';
 import StatusModal from './StatusModal'
 
-const EmployeeTable = ({data, addName, addProject, changeStatus, statuses}) => {
+const EmployeeTable = ({data, addName, addProject, changeStatus, statuses, loaded}) => {
     const [isClicked, setClick] = React.useState(false)
+
     return (
         <div style={{ display: 'flex' }}>
             <Table
@@ -18,7 +19,7 @@ const EmployeeTable = ({data, addName, addProject, changeStatus, statuses}) => {
                     header={<Cell>Имя</Cell>}
                     cell={({ rowIndex, ...props }) => (
                         <Cell {...props} style = {{position: 'relative'}}>
-                            <InputCell text = {data[rowIndex].name} inputHandler={addName} index={rowIndex}/>
+                            <InputCell loaded = {loaded} text = {data[rowIndex].name} inputHandler={addName} index={rowIndex}/>
                         </Cell>
                     )}
                     width={300}
@@ -27,7 +28,7 @@ const EmployeeTable = ({data, addName, addProject, changeStatus, statuses}) => {
                     header={<Cell>Проект</Cell>}
                     cell={({ rowIndex, ...props }) => (
                         <Cell {...props}>
-                            <InputCell text = {data[rowIndex].project} inputHandler={addProject} index={rowIndex}/>
+                            <InputCell loaded = {loaded} text = {data[rowIndex].project} inputHandler={addProject} index={rowIndex}/>
                         </Cell>
                     )}
                     width={300}

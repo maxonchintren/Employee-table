@@ -1,12 +1,12 @@
 import React from 'react'
 import { Table, Column, Cell } from 'fixed-data-table-2';
 import 'fixed-data-table-2/dist/fixed-data-table.css';
-import InputCell from '../EmployeeTable/InputCell';
+import InputCell from '../UIKit/InputCell';
 import ColorModal from './ColorModal';
 
 
 
-const MonthTable = ({ data, calendar, month, addTimeSpent, colors, changeColor }) => {
+const MonthTable = ({ data, calendar, month, addTimeSpent, colors, changeColor, loaded }) => {
 
     const [isClicked, setClick] = React.useState(false)
     let styles = {}
@@ -48,13 +48,13 @@ const MonthTable = ({ data, calendar, month, addTimeSpent, colors, changeColor }
                                             key={index}
                                             onContextMenu = {contextHandler}
                                         >
-                                            {/* {data[rowIndex - 1].months[month].business[columnKey]} */}
                                             <InputCell text = {data[rowIndex - 1].months[month].business[columnKey]}
                                              inputHandler = {addTimeSpent} 
                                              index = {rowIndex - 1}
                                              month = {month}
                                              columnKey = {index}
                                              style = {{position: 'relative'}}
+                                             loaded = {loaded}
                                              />
                                              {isClicked && columnKey === 0? <ColorModal colors={colors} index ={rowIndex - 1} changeColor = {changeColor} month ={month}/> : ''}
                                         </Cell>

@@ -1,30 +1,30 @@
 let initialData = {
     data: [
         {
-            name: 'Maxim Moiseev',
-            project: 'Employee Table',
-            status: 'Идет',
+            name: ' ',
+            project: ' ',
+            status: ' ',
             months: {
                 January: {
-                    business: [40, 20, 40, 30],
+                    business: ['', '', '', ''],
                     isConfirmed: true
                     // true = confirmed, false = not confirmed, null = downtime
                 },
                 February: {
-                    business: [20, 20, 20, 20],
-                    isConfirmed: 'Неподтвержден'
+                    business: ['', '', '', ''],
+                    isConfirmed: null
                 },
                 March: {
-                    business: [40, 40, 40, 40],
-                    isConfirmed: 'Неподтвержден'
+                    business: ['', '', '', ''],
+                    isConfirmed: null
                 },
                 April: {
-                    business: [20, 30, 30, 30, 40],
-                    isConfirmed: 'Подтвержден'
+                    business: ['', '', '', ''],
+                    isConfirmed: null
                 },
                 May: {
-                    business: [20, 20, 20, 20],
-                    isConfirmed: 'Простой'
+                    business: ['', '', '', ''],
+                    isConfirmed: null
                 },
                 June: {
                     business: ['', '', '', ''],
@@ -56,62 +56,6 @@ let initialData = {
                 }
             }
         },
-        {
-            name: 'Valery Pronin',
-            project: 'Employee Table',
-            status: 'Согласован старт',
-            months: {
-                January: {
-                    business: [20, 40, 40, 40],
-                    isConfirmed: 'Подтвержден'
-                    // true = confirmed, false = not confirmed, null = downtime
-                },
-                February: {
-                    business: [40, 40, 40, 40],
-                    isConfirmed: 'Подтвержден'
-                },
-                March: {
-                    business: [30, 40, 40, 30],
-                    isConfirmed: 'Подтвержден'
-                },
-                April: {
-                    business: [20, 20, 20, 20, 20],
-                    isConfirmed: 'Неподтвержден'
-                },
-                May: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                June: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                July: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                August: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                September: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                October: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                November: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                December: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                }
-            }
-        }
     ],
 
     calendar: {
@@ -171,6 +115,5 @@ let initialData = {
     ],
     statuses: ['Идет', 'Согласован старт', 'Завершается']
 }
-
 
 export default initialData

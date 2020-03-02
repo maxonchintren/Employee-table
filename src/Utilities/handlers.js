@@ -1,5 +1,6 @@
 
 
+
 function addEmployee(array, setFunc) {
     setFunc(
         array.concat([
@@ -62,25 +63,22 @@ function addEmployee(array, setFunc) {
     )
 }
 
-async function getData(setFunc1, setFunc2, setFunc3) {
-    const apiCall = await fetch(`https://employee-table-fa1eb.firebaseio.com/initialData.json`);
-    const response = await apiCall.json()
-    let key = Object.keys(response)[0]
-    setFunc1(response[key].data)
-    setFunc2(response[key].colors)
-    setFunc3(response[key].statuses)
+async function getData() {
+    return fetch(`https://employee-table-fa1eb.firebaseio.com/initialData.json/`);
+
   }
 
-function postData() {
-        const data = {}
-        fetch('https://employee-table-fa1eb.firebaseio.com/initialData.json', {
-                method: 'POST',
-                body: JSON.stringify(data),
+
+
+function postData(statuses, employees, colors) {
+        const postingData = {statuses: statuses, data: employees, colors: colors}
+        fetch(`https://employee-table-fa1eb.firebaseio.com/initialData.json/`, {
+                method: 'PUT',
+                body: JSON.stringify(postingData),
                 headers: {
                     'Content-Type': 'application/json' 
                 }
-            })
-            
+            })         
 }
 
 export {addEmployee, getData, postData}

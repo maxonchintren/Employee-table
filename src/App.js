@@ -2,7 +2,7 @@ import React from 'react';
 
 import EmployeeTable from './Components/EmployeeTable/EmployeeTable';
 import MonthTable from './Components/MonthTable/MonthTable';
-import Button from './Components/Button'
+import Button from './Components/UIKit/Button'
 import ModalStatusList from './Components/EmployeeTable/ModalStatusList';
 import ModalColorList from './Components/MonthTable/ModalColorList'
 
@@ -13,16 +13,32 @@ import { addEmployee, getData, postData } from './Utilities/handlers'
 function App() {
 
   let date = new Date()
-  const [preventLoop, setLoop] = React.useState(0)
+  const [loaded, setLoaded] = React.useState(false)
   const [isClickedStatus, setClickStatus] = React.useState(false)
   const [isClickedColor, setClickColor] = React.useState(false)
   const [statuses, setStatuses] = React.useState(initialData.statuses)
   const [employees, setEmployees] = React.useState(initialData.data)
   const [colors, setColors] = React.useState(initialData.colors)
 
+
   React.useEffect(() => {
-    getData(setEmployees, setColors, setStatuses)
-  },[preventLoop])
+    async function load() {
+      let newData = await (await getData()).json()
+        setStatuses(await newData.statuses)
+        setEmployees(await newData.data)
+        setColors(await newData.colors)
+        setLoaded(true)
+    }
+    load()
+  }, [])
+
+  React.useEffect(() => {
+    if (loaded) {
+      postData(statuses, employees, colors)
+    }
+
+  }, [statuses, employees, colors, loaded])
+
 
   function addBtnHandler() {
     return addEmployee(employees, setEmployees)
@@ -136,7 +152,7 @@ function App() {
   return (
 
     <div style={{ display: 'flex' }}>
-      <EmployeeTable data={employees} addName={addName} addProject={addProject} changeStatus={changeStatus} statuses={statuses} />
+      <EmployeeTable data={employees} addName={addName} addProject={addProject} changeStatus={changeStatus} statuses={statuses} loaded ={loaded}/>
       {Object.keys(initialData.calendar).splice(date.getMonth(), 3).map((month, index) => {
         return (
           <MonthTable data={employees}
@@ -146,20 +162,18 @@ function App() {
             addTimeSpent={addTimeSpent}
             colors={colors}
             changeColor={changeColor}
+            loaded ={loaded}
           />
         )
       })}
-      <Button text='Добавить сотрудника' type='addEmp' handler={addBtnHandler}></Button>
-      {/* <div onClick = {() => setClick(!isClicked)}>
-        {!isClicked ? <Button text='Список статусов' type='editStatus' handler={editStatusArr}></Button> : <Modal statuses = {statuses}/>}
-      </div> */}
-      <Button text='Список статусов' type='editStatus' handler={() => setClickStatus(!isClickedStatus)}></Button>
+      <Button text="Добавить сотрудника" type="addEmp" handler={addBtnHandler}></Button>
+      <Button text="Список статусов" type="editStatus" handler={() => setClickStatus(!isClickedStatus)}></Button>
       {!isClickedStatus ? '' : <ModalStatusList statuses={statuses}
         closeFunc={() => setClickStatus(!isClickedStatus)}
         addFunc={addStatusInList}
         deleteFunc={deleteStatusInList}
       />}
-      <Button text='Список цветов' type='editColor' handler={() => setClickColor(!isClickedColor)} />
+      <Button text="Список цветов" type="editColor" handler={() => setClickColor(!isClickedColor)} />
       {!isClickedColor ? '' : <ModalColorList colors={colors}
         closeFunc={() => setClickColor(!isClickedColor)}
         addFunc={addColorInList}
