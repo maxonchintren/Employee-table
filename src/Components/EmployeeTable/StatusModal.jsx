@@ -6,7 +6,7 @@ const styles = {
         margin: '0 auto',
         display: 'flex',
         flexWrap: 'wrap',
-        height: '100px',
+        height: '100px'
     },
     button: {
         height: '20px',
@@ -16,8 +16,8 @@ const styles = {
     }
 }
 
-const StatusModal = ({ inputHandler }) => {
-    const statuses = ['Идет', 'Согласован старт', 'Завершается']
+const StatusModal = ({ inputHandler, statuses }) => {
+
     return (
         <div style = {styles.container}>
             {statuses.map((status,index) => {

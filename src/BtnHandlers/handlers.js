@@ -9,51 +9,51 @@ function addEmployee(array, setFunc) {
                 status: '',
                 months: {
                     January: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     February: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     March: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     April: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     May: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     June: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     July: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     August: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     September: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     October: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     November: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     },
                     December: {
-                        business: [],
+                        business: ['', '', '', ''],
                         isConfirmed: null
                     }
                 }
@@ -62,5 +62,9 @@ function addEmployee(array, setFunc) {
     )
 }
 
+function editStatusArr() {
 
-export {addEmployee}
+}
+
+
+export {addEmployee, editStatusArr}

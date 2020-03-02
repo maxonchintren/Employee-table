@@ -8,6 +8,14 @@ const style = {
         left: '20px',
         padding: '10px 20px',
         cursor: 'pointer'
+    },
+    editStatus: {
+        fontSize: '20px',
+        position: 'fixed',
+        bottom: '20px',
+        left: '270px',
+        padding: '10px 20px',
+        cursor: 'pointer'
     }
     
 }

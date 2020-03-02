@@ -1,33 +1,18 @@
 import React from 'react'
 import { Table, Column, Cell } from 'fixed-data-table-2';
 import 'fixed-data-table-2/dist/fixed-data-table.css';
+import InputCell from '../EmployeeTable/InputCell';
 
 
-let styles = {
-    confirmed: {
-        background: 'rgba(52, 163, 46, 0.7)'
-    },
-    notConfirmed: {
-        background: 'rgba(30%, 41%, 82%, 0.7)'
-    },
-    downtime: {
-        background: 'rgba(82%, 25%, 27%, 0.7)'
-    }
-}
 
+const MonthTable = ({ data, calendar, month, addTimeSpent, colors }) => {
 
-const MonthTable = ({ data, calendar, month }) => {
+    let styles = {}
 
-  
-    function setColor(rowIndex) {
-        if (data[rowIndex - 1].months[month].isConfirmed) {
-            return styles.confirmed
-        } else if (data[rowIndex - 1].months[month].isConfirmed === null) {
-            return styles.downtime
-        } else if (data[rowIndex - 1].months[month].isConfirmed === false) {
-            return styles.notConfirmed
-        }
-    }
+    colors.map((color) => {
+        styles[color.name] = {background: `rgb(${color.color[0]}, ${color.color[1]}, ${color.color[2]})`, textAlign: 'center'}
+        return color
+    })
 
     return (
         <div style={{ display: 'flex' }}>
@@ -47,15 +32,21 @@ const MonthTable = ({ data, calendar, month }) => {
                             columnKey={index}
                             cell={({ rowIndex, columnKey, ...props }) => {
                                 if (rowIndex === 0) {
-                                    return <Cell {...props} key={index}>{week}</Cell>
+                                    return <Cell {...props} key={index} style = {{textAlign: 'center'}}>{week}</Cell>
                                 } else {
                                     return (
                                         <Cell
                                             {...props}
-                                            style={setColor(rowIndex)}
+                                            style={styles[data[rowIndex - 1].months[month].isConfirmed]}
                                             key={index}
                                         >
-                                            {data[rowIndex - 1].months[month].business[columnKey]}
+                                            {/* {data[rowIndex - 1].months[month].business[columnKey]} */}
+                                            <InputCell text = {data[rowIndex - 1].months[month].business[columnKey]}
+                                             inputHandler = {addTimeSpent} 
+                                             index = {rowIndex - 1}
+                                             month = {month}
+                                             columnKey = {index}
+                                             />
                                         </Cell>
                                     )
                                 }

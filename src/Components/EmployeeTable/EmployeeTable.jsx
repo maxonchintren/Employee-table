@@ -4,7 +4,7 @@ import 'fixed-data-table-2/dist/fixed-data-table.css';
 import InputCell from './InputCell';
 import StatusModal from './StatusModal'
 
-const EmployeeTable = ({data, addName, addProject, changeStatus}) => {
+const EmployeeTable = ({data, addName, addProject, changeStatus, statuses}) => {
     const [isClicked, setClick] = React.useState(false)
     return (
         <div style={{ display: 'flex' }}>
@@ -35,8 +35,8 @@ const EmployeeTable = ({data, addName, addProject, changeStatus}) => {
                 <Column
                     header={<Cell>Статус</Cell>}
                     cell={({ rowIndex, ...props }) => (
-                        <Cell {...props} text = {data[rowIndex].status} onClick = {() => setClick(!isClicked)} id={rowIndex}>
-                             {!isClicked ? data[rowIndex].status : <StatusModal inputHandler = {changeStatus}/>}
+                        <Cell {...props} text = {data[rowIndex].status} onClick = {() => setClick(!isClicked)} id={rowIndex} style ={{textAlign: 'center'}} >
+                             {!isClicked ? data[rowIndex].status : <StatusModal inputHandler = {changeStatus} statuses = {statuses}/>}
                         </Cell>
                     )}
                     width={300}

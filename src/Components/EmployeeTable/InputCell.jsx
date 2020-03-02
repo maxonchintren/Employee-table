@@ -1,13 +1,13 @@
 import React from 'react'
 
-const InputCell = ({text , inputHandler, index}) => {
+const InputCell = ({text , inputHandler, index, columnKey, month}) => {
     let [value, setValue] = React.useState(text)
 
     function saveInput(event) {
         if (event.key === 'Enter') {
             let target = event.target
             onChange(event)
-            inputHandler(value, index)
+            inputHandler(value, index, columnKey, month)
             target.style.background = 'rgba(52, 163, 46, 0.2)';
             setTimeout(() => {
                 target.style.background = 'transparent'
@@ -22,11 +22,13 @@ const InputCell = ({text , inputHandler, index}) => {
 
     const style = {
         background: 'transparent',
-        width: '80%',
+        width: '90%',
         height: '50px',
         border: 'none',
-        padding: '10px 10px',
-        fontSize: 'inherit'
+        padding: '10px 3px',
+        fontSize: 'inherit',
+        textAlign: 'center',
+        margin: '0 auto'
     }
 
     return (

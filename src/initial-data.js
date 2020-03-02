@@ -12,46 +12,46 @@ const initialData = {
                 },
                 February: {
                     business: [20, 20, 20, 20],
-                    isConfirmed: false
+                    isConfirmed: 'Неподтвержден'
                 },
                 March: {
                     business: [40, 40, 40, 40],
-                    isConfirmed: false
+                    isConfirmed: 'Неподтвержден'
                 },
                 April: {
-                    business: [20, 30, 30, 30],
-                    isConfirmed: true
+                    business: [20, 30, 30, 30, 40],
+                    isConfirmed: 'Подтвержден'
                 },
                 May: {
                     business: [20, 20, 20, 20],
-                    isConfirmed: null
+                    isConfirmed: 'Простой'
                 },
                 June: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 July: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 August: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 September: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 October: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 November: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 December: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 }
             }
@@ -63,52 +63,52 @@ const initialData = {
             months: {
                 January: {
                     business: [20, 40, 40, 40],
-                    isConfirmed: true
+                    isConfirmed: 'Подтвержден'
                     // true = confirmed, false = not confirmed, null = downtime
                 },
                 February: {
                     business: [40, 40, 40, 40],
-                    isConfirmed: true
+                    isConfirmed: 'Подтвержден'
                 },
                 March: {
                     business: [30, 40, 40,30],
-                    isConfirmed: true
+                    isConfirmed: 'Подтвержден'
                 },
                 April: {
-                    business: [20, 20, 20, 20],
-                    isConfirmed: false
+                    business: [20, 20, 20, 20, 20],
+                    isConfirmed: 'Неподтвержден'
                 },
                 May: {
-                    business: [],
-                    isConfirmed: null
+                    business: ['', '', '', ''],
+                    isConfirmed: 'Простой'
                 },
                 June: {
-                    business: [],
-                    isConfirmed: null
+                    business: ['', '', '', ''],
+                    isConfirmed: 'Простой'
                 },
                 July: {
-                    business: [],
-                    isConfirmed: null
+                    business: ['', '', '', ''],
+                    isConfirmed: 'Простой'
                 },
                 August: {
-                    business: [],
-                    isConfirmed: null
+                    business: ['', '', '', ''],
+                    isConfirmed: 'Простой'
                 },
                 September: {
-                    business: [],
-                    isConfirmed: null
+                    business: ['', '', '', ''],
+                    isConfirmed: 'Простой'
                 },
                 October: {
-                    business: [],
-                    isConfirmed: null
+                    business: ['', '', '', ''],
+                    isConfirmed: 'Простой'
                 },
                 November: {
-                    business: [],
-                    isConfirmed: null
+                    business: ['', '', '', ''],
+                    isConfirmed: 'Простой'
                 },
                 December: {
-                    business: [],
-                    isConfirmed: null
+                    business: ['', '', '', ''],
+                    isConfirmed: 'Простой'
                 }
             }
         },
@@ -118,51 +118,51 @@ const initialData = {
             status: 'Завершается',
             months: {
                 January: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 February: {
-                    business: [40,40,40,40],
-                    isConfirmed: true
+                    business: [40, 40, 40, 40],
+                    isConfirmed: 'Подтвержден'
                 },
                 March: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 April: {
-                    business: [40,40,40,40],
-                    isConfirmed: true
+                    business: [40, 40, 40, 40, 40],
+                    isConfirmed: 'Подтвержден'
                 },
                 May: {
-                    business: [30,40,40,40],
-                    isConfirmed: false
+                    business: [30, 40, 40, 40],
+                    isConfirmed: 'Неподтвержден'
                 },
                 June: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 July: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 August: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 September: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 October: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 November: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 },
                 December: {
-                    business: [],
+                    business: ['', '', '', ''],
                     isConfirmed: null
                 }
             }
@@ -218,7 +218,13 @@ const initialData = {
             name: 'Декабрь',
             weeks: [49, 50, 51, 52, 53]
         }
-    }
+    },
+    colors: [
+        {name: 'Простой', color: [223, 121, 124]},
+        {name: 'Неподтвержден', color: [127, 148, 221]},
+        {name: 'Подтвержден', color: [113, 190, 108]}
+    ],
+    statuses: ['Идет', 'Согласован старт', 'Завершается']
 }
 
 export default initialData
