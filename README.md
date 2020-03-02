@@ -5,6 +5,10 @@
 3. `npm install`
 4. `npm start` или `npm run start`
 
+## Примечания
+
+Для сохранения изменений в ячейке таблицы, нужно нажать клавишу 'Enter' (кроме ячеек со статусом проекта).
+Лишние логи и комментарии не были удалены.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
