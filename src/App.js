@@ -6,7 +6,7 @@ import Button from './Components/Button'
 
 import initialData from './initial-data'
 
-import { addEmployee } from './BtnHandlers/handlers'
+import { addEmployee } from './Utilities/handlers'
 import Modal from './Components/Modal';
 
 function App() {
