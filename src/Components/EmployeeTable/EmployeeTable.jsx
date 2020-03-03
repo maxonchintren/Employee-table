@@ -7,6 +7,7 @@ import StatusModal from './StatusModal'
 const EmployeeTable = ({data, addName, addProject, changeStatus, statuses, loaded}) => {
     const [isClicked, setClick] = React.useState(false)
 
+
     return (
         <div style={{ display: 'flex' }}>
             <Table
@@ -36,8 +37,8 @@ const EmployeeTable = ({data, addName, addProject, changeStatus, statuses, loade
                 <Column
                     header={<Cell>Статус</Cell>}
                     cell={({ rowIndex, ...props }) => (
-                        <Cell {...props} text = {data[rowIndex].status} onClick = {() => setClick(!isClicked)} id={rowIndex} style ={{textAlign: 'center'}} >
-                             {!isClicked ? data[rowIndex].status : <StatusModal inputHandler = {changeStatus} statuses = {statuses}/>}
+                        <Cell {...props} text = {data[rowIndex].status} onClick = {() => setClick(true)} id={rowIndex} style ={{textAlign: 'center'}} >
+                             {!isClicked  ? data[rowIndex].status : <StatusModal inputHandler = {changeStatus} statuses = {statuses} setClick={setClick}/>}
                         </Cell>
                     )}
                     width={300}

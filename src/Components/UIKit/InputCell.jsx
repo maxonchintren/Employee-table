@@ -3,11 +3,6 @@ import React from 'react'
 const InputCell = ({text , inputHandler, index, columnKey, month, loaded}) => {
     const [value, setValue] = React.useState(text)
 
-    React.useEffect(() => {
-        if (loaded) {
-            setValue(text)  
-        }
-    }, [text, loaded])
 
     function saveInput(event) {
         if (event.key === 'Enter') {

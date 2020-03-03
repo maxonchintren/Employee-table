@@ -67,9 +67,9 @@ function App() {
     )
   }
 
-  function changeStatus(event) {
-    let targetId = event.target.parentElement.parentElement.parentElement.parentElement.parentElement.id
-    let newStatus = event.target.textContent
+  function changeStatus(event, value) {
+    let targetId = event.target.parentElement.parentElement.parentElement.parentElement.id
+    let newStatus = value
     setEmployees(
       employees.map((employee, index) => {
         if (index === +targetId) {

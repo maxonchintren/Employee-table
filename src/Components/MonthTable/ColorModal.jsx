@@ -30,7 +30,7 @@ const ColorModal = ({colors, index , changeColor, month}) => {
     return (
         <div style = {styles.container}>
             {colors.map((color,i) => {
-                return <button  key ={i} style ={styles.button} onClick = {() => changeColor(index, month)}>{color.name}</button>
+                return <button  key ={i} style ={styles.button} onClick = {(event) => changeColor(index, month, event)}>{color.name}</button>
             })}
         </div>
     )
