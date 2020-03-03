@@ -74,7 +74,7 @@ const ModalColorList = ({ colors, closeFunc, addFunc, deleteFunc }) => {
                             <div style = {styles.colorsCont}  key={index}>
                                 <span style={styles.span}>{color.name}</span>
                                 <div style={{ height: '30px', width: '30px', background: `rgb(${color.color[0]}, ${color.color[1]}, ${color.color[2]})`, margin: '0 10px', border: '1px solid black' }}></div>
-                                <button style={styles.button} key ={index} onClick={deleteFunc.bind(null, index)}>&times;</button>
+                                <button style={styles.button} key ={index} onClick={() => deleteFunc(index)}>&times;</button>
                             </div>
                         )
                     })}
@@ -82,7 +82,7 @@ const ModalColorList = ({ colors, closeFunc, addFunc, deleteFunc }) => {
                 <div style={styles.innerContainer}>
                     <input style={styles.input} type='text' value={newColorName} onChange={(event) => setNewColor(event.target.value)} maxLength='20' placeholder='Название цвета' />
                     <input style={styles.input} type='text' value={value} onChange={(event) => setValue(event.target.value)} maxLength='13' placeholder='255, 255, 255' />
-                    <button style={styles.addBtn} onClick={addFunc.bind(null, value, newColorName, setValue)}>Добавить в список (формат RGB)</button>
+                    <button style={styles.addBtn} onClick={() => addFunc(value, newColorName, setValue)}>Добавить в список (формат RGB)</button>
                 </div>
                 <button style={styles.exit} onClick={closeFunc}>&times;</button>
             </div>

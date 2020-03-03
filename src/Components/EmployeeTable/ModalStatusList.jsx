@@ -60,12 +60,12 @@ const ModalStatusList = ({ statuses, closeFunc, addFunc, deleteFunc }) => {
                 </div>
                 <div style = {styles.innerContainer}>
                     {statuses.map((status, index) => {
-                        return <button style={styles.button} key ={index} onClick={deleteFunc.bind(null, index)}>&times;</button>
+                        return <button style={styles.button} key ={index} onClick={() => deleteFunc(index)}>&times;</button>
                     })}
                 </div>
                 <div style = {styles.innerContainer}>
                     <input type ='text' value = {value} onChange = {(event) => setValue(event.target.value)} maxLength = '25'/>
-                    <button style = {styles.span} onClick={addFunc.bind(null, value, setValue)}>Добавить в список</button>
+                    <button style = {styles.span} onClick={() => addFunc(value, setValue)}>Добавить в список</button>
                 </div>
                 <button style= {styles.exit} onClick={closeFunc}>&times;</button>
             </div>
