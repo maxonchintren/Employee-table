@@ -1,15 +1,6 @@
 import React from 'react'
 
-const styles = {
-    container: {
-        width: '95%',
-        margin: '0 auto',
-        height: '50px',
-        cursor: 'pointer',
-        border: '1px solid #ccc',
-        borderRadius: '5px'
-    }
-}
+import s from './Employee.module.css'
 
 const StatusModal = ({ inputHandler, statuses, setClick }) => {
     const [value, setValue] = React.useState('Идет')
@@ -25,7 +16,7 @@ const StatusModal = ({ inputHandler, statuses, setClick }) => {
 
     return (
         <form onSubmit = {handleSubmit}>
-            <select style={styles.container} onChange={handleChange} value = {value}>
+            <select className={s.select_container} onChange={handleChange} value = {value}>
                 {statuses.map((status, index) => {
                     return <option key={index} >{status}</option>
                 })}

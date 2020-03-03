@@ -1,6 +1,8 @@
 import React from 'react'
 
-const InputCell = ({text , inputHandler, index, columnKey, month, loaded}) => {
+import s from './UI.module.css' 
+
+const InputCell = ({text , inputHandler, index, columnKey, month}) => {
     const [value, setValue] = React.useState(text)
 
 
@@ -20,19 +22,8 @@ const InputCell = ({text , inputHandler, index, columnKey, month, loaded}) => {
         setValue(event.target.value)
     }
 
-    const style = {
-        background: 'transparent',
-        width: '90%',
-        height: '50px',
-        border: 'none',
-        padding: '10px 3px',
-        fontSize: 'inherit',
-        textAlign: 'center',
-        margin: '0 auto'
-    }
-
     return (
-        <input style = {style} value = {value} onKeyPress = {saveInput} onChange = {onChange} ></input>
+        <input className = {s.input_cell} value = {value} onKeyPress = {saveInput} onChange = {onChange} ></input>
     )
 }
 

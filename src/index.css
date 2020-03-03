@@ -22,3 +22,7 @@ code {
   font-size: 40px;
   color: #fff;
 }
+
+.app_container {
+  display: flex
+}

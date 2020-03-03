@@ -1,36 +1,12 @@
 import React from 'react'
 
-const styles = {
-    container: {
-        width: '100%',
-        margin: '0 auto',
-        display: 'flex',
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-        height: '100px',
-        position: 'absolute',
-        zIndex: '999',
-        top: '0',
-        left: '0',
-        
-    },
-    button: {
-        width: '100%',
-        fontSize: '12px',
-        height: '18px',
-        padding: '2px 0',
-        margin: '0 auto',
-        border: 'none',
-        cursor: 'pointer',
-        background: '#fff'
-    }
-}
+import s from './Month.module.css'
 
 const ColorModal = ({colors, index , changeColor, month}) => {
     return (
-        <div style = {styles.container}>
+        <div className = {s.colormodal_container}>
             {colors.map((color,i) => {
-                return <button  key ={i} style ={styles.button} onClick = {(event) => changeColor(index, month, event)}>{color.name}</button>
+                return <button  key ={i} className = {s.colormodal_button} onClick = {(event) => changeColor(index, month, event)}>{color.name}</button>
             })}
         </div>
     )

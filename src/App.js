@@ -151,7 +151,7 @@ function App() {
   }
   if (loaded) {
     return (
-      <div style={{ display: 'flex' }}>
+      <div className='app_container'>
         <EmployeeTable data={employees} addName={addName} addProject={addProject} changeStatus={changeStatus} statuses={statuses} loaded ={loaded}/>
         {Object.keys(initialData.calendar).splice(date.getMonth(), 3).map((month, index) => {
           return (
@@ -183,7 +183,7 @@ function App() {
     );
   } else {
     return (
-      <div className = 'loading'>Загрузка...</div>
+      <div className = "loading">Загрузка...</div>
     )
   }
 }
