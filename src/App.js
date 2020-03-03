@@ -91,7 +91,8 @@ function App() {
     )
   }
 
-  function addStatusInList(value, setFunc) {
+  function addStatusInList(value, setFunc, event) {
+    event.target.blur()
     if (value.trim()) {
       setStatuses(statuses.concat([value]))
       setFunc('')
@@ -125,7 +126,8 @@ function App() {
     )
   }
 
-  function addColorInList(value, colorName, setFunc) {
+  function addColorInList(value, colorName, setFunc, event) {
+    event.target.blur()
     if (value.trim()) {
       setColors(colors.concat([{ name: colorName, color: value.split(',') }]))
       setFunc('')

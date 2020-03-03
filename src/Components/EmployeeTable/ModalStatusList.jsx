@@ -5,24 +5,32 @@ import s from './Employee.module.css'
 const ModalStatusList = ({ statuses, closeFunc, addFunc, deleteFunc }) => {
     const [value, setValue] = React.useState('')
 
+    function closeHandler(event) {
+        let target = event.target.parentElement.parentElement
+        target.style.transform = 'scale(0.01, 0.01)'
+        setTimeout(() => {
+            closeFunc()
+        }, 170);
+    }
+
     return (
-        <div className = {s.outerContainer}>
+        <div className={s.outerContainer}>
             <div className={s.container}>
-                <div className = {s.innerContainer}>
-                    {statuses.map((status, index)=> {
-                        return <span className={s.span} key={index}>{status}</span>
-                    })}
-                </div>
-                <div className = {s.innerContainer}>
+                <div className={s.innerContainer}>
                     {statuses.map((status, index) => {
-                        return <button className={s.button} key ={index} onClick={() => deleteFunc(index)}>&times;</button>
+                        return (
+                            <div className ={s.statusesCont} key={index}>
+                                <span className={s.span}>{status}</span>
+                                <button className={s.button}  onClick={() => deleteFunc(index)}>&times;</button>
+                            </div>
+                        )
                     })}
                 </div>
-                <div className = {s.innerContainer}>
-                    <input type ='text' value = {value} onChange = {(event) => setValue(event.target.value)} maxLength = '25'/>
-                    <button className = {s.span} onClick={() => addFunc(value, setValue)}>Добавить в список</button>
+                <div className={s.innerContainer}>
+                    <input className={s.input} type='text' value={value} onChange={(event) => setValue(event.target.value)} maxLength='25' />
+                    <button className={s.addBtn} onClick={(e) => addFunc(value, setValue, e)}>Добавить в список</button>
+                    <button className={s.exit} onClick={closeHandler}>&times;</button>
                 </div>
-                <button className= {s.exit} onClick={closeFunc}>&times;</button>
             </div>
         </div>
     )
