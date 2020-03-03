@@ -149,38 +149,43 @@ function App() {
       })
     )
   }
-  return (
-
-    <div style={{ display: 'flex' }}>
-      <EmployeeTable data={employees} addName={addName} addProject={addProject} changeStatus={changeStatus} statuses={statuses} loaded ={loaded}/>
-      {Object.keys(initialData.calendar).splice(date.getMonth(), 3).map((month, index) => {
-        return (
-          <MonthTable data={employees}
-            calendar={initialData.calendar}
-            month={month}
-            key={index}
-            addTimeSpent={addTimeSpent}
-            colors={colors}
-            changeColor={changeColor}
-            loaded ={loaded}
-          />
-        )
-      })}
-      <Button text="Добавить сотрудника" type="addEmp" handler={addBtnHandler}></Button>
-      <Button text="Список статусов" type="editStatus" handler={() => setClickStatus(!isClickedStatus)}></Button>
-      {!isClickedStatus ? '' : <ModalStatusList statuses={statuses}
-        closeFunc={() => setClickStatus(!isClickedStatus)}
-        addFunc={addStatusInList}
-        deleteFunc={deleteStatusInList}
-      />}
-      <Button text="Список цветов" type="editColor" handler={() => setClickColor(!isClickedColor)} />
-      {!isClickedColor ? '' : <ModalColorList colors={colors}
-        closeFunc={() => setClickColor(!isClickedColor)}
-        addFunc={addColorInList}
-        deleteFunc={deleteColorInList}
-      />}
-    </div>
-  );
+  if (loaded) {
+    return (
+      <div style={{ display: 'flex' }}>
+        <EmployeeTable data={employees} addName={addName} addProject={addProject} changeStatus={changeStatus} statuses={statuses} loaded ={loaded}/>
+        {Object.keys(initialData.calendar).splice(date.getMonth(), 3).map((month, index) => {
+          return (
+            <MonthTable data={employees}
+              calendar={initialData.calendar}
+              month={month}
+              key={index}
+              addTimeSpent={addTimeSpent}
+              colors={colors}
+              changeColor={changeColor}
+              loaded ={loaded}
+            />
+          )
+        })}
+        <Button text="Добавить сотрудника" type="addEmp" handler={addBtnHandler}></Button>
+        <Button text="Список статусов" type="editStatus" handler={() => setClickStatus(!isClickedStatus)}></Button>
+        {!isClickedStatus ? '' : <ModalStatusList statuses={statuses}
+          closeFunc={() => setClickStatus(!isClickedStatus)}
+          addFunc={addStatusInList}
+          deleteFunc={deleteStatusInList}
+        />}
+        <Button text="Список цветов" type="editColor" handler={() => setClickColor(!isClickedColor)} />
+        {!isClickedColor ? '' : <ModalColorList colors={colors}
+          closeFunc={() => setClickColor(!isClickedColor)}
+          addFunc={addColorInList}
+          deleteFunc={deleteColorInList}
+        />}
+      </div>
+    );
+  } else {
+    return (
+      <div className = 'loading'>Загрузка...</div>
+    )
+  }
 }
 
 export default App;
