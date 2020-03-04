@@ -1,0 +1,35 @@
+.input_cell {
+    background: transparent;
+    width: 90%;
+    height: 50px;
+    border: none;
+    padding: 10px 3px;
+    font-size: inherit;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.addEmp {
+    font-size: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.editStatus {
+    font-size: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 270px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.editColor {
+    font-size: 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 475px;
+    padding: 10px 20px;
+    cursor: pointer;
+}

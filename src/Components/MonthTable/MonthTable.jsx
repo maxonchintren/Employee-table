@@ -1,12 +1,14 @@
 import React from 'react'
+
 import { Table, Column, Cell } from 'fixed-data-table-2';
 import 'fixed-data-table-2/dist/fixed-data-table.css';
-import InputCell from '../EmployeeTable/InputCell';
+
+import InputCell from '../UIKit/InputCell';
 import ColorModal from './ColorModal';
 
+import s from './Month.module.css'
 
-
-const MonthTable = ({ data, calendar, month, addTimeSpent, colors, changeColor }) => {
+const MonthTable = ({ data, calendar, month, addTimeSpent, colors, changeColor, loaded }) => {
 
     const [isClicked, setClick] = React.useState(false)
     let styles = {}
@@ -22,7 +24,7 @@ const MonthTable = ({ data, calendar, month, addTimeSpent, colors, changeColor }
     }
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div className={s.month_table_container}>
             <Table
                 rowHeight={50}
                 rowsCount={data.length + 1}
@@ -39,7 +41,7 @@ const MonthTable = ({ data, calendar, month, addTimeSpent, colors, changeColor }
                             columnKey={index}
                             cell={({ rowIndex, columnKey, ...props }) => {
                                 if (rowIndex === 0) {
-                                    return <Cell {...props} key={index} style = {{textAlign: 'center'}}>{week}</Cell>
+                                    return <Cell {...props} key={index} className = {s.week_cell}>{week}</Cell>
                                 } else {
                                     return (
                                         <Cell
@@ -48,13 +50,13 @@ const MonthTable = ({ data, calendar, month, addTimeSpent, colors, changeColor }
                                             key={index}
                                             onContextMenu = {contextHandler}
                                         >
-                                            {/* {data[rowIndex - 1].months[month].business[columnKey]} */}
                                             <InputCell text = {data[rowIndex - 1].months[month].business[columnKey]}
                                              inputHandler = {addTimeSpent} 
                                              index = {rowIndex - 1}
                                              month = {month}
                                              columnKey = {index}
-                                             style = {{position: 'relative'}}
+                                             className = {s.input_cell}
+                                             loaded = {loaded}
                                              />
                                              {isClicked && columnKey === 0? <ColorModal colors={colors} index ={rowIndex - 1} changeColor = {changeColor} month ={month}/> : ''}
                                         </Cell>

@@ -1,13 +1,19 @@
 import React from 'react'
+
 import { Table, Column, Cell } from 'fixed-data-table-2';
 import 'fixed-data-table-2/dist/fixed-data-table.css';
-import InputCell from './InputCell';
+
+import InputCell from '../UIKit/InputCell';
 import StatusModal from './StatusModal'
 
-const EmployeeTable = ({data, addName, addProject, changeStatus, statuses}) => {
+import s from './Employee.module.css'
+
+const EmployeeTable = ({data, addName, addProject, changeStatus, statuses, loaded}) => {
     const [isClicked, setClick] = React.useState(false)
+
+
     return (
-        <div style={{ display: 'flex' }}>
+        <div className={s.employee_table_container}>
             <Table
                 rowHeight={100}
                 rowsCount={data.length}
@@ -17,8 +23,8 @@ const EmployeeTable = ({data, addName, addProject, changeStatus, statuses}) => {
                 <Column
                     header={<Cell>Имя</Cell>}
                     cell={({ rowIndex, ...props }) => (
-                        <Cell {...props} style = {{position: 'relative'}}>
-                            <InputCell text = {data[rowIndex].name} inputHandler={addName} index={rowIndex}/>
+                        <Cell {...props} className = {s.cell_name}>
+                            <InputCell loaded = {loaded} text = {data[rowIndex].name} inputHandler={addName} index={rowIndex}/>
                         </Cell>
                     )}
                     width={300}
@@ -27,7 +33,7 @@ const EmployeeTable = ({data, addName, addProject, changeStatus, statuses}) => {
                     header={<Cell>Проект</Cell>}
                     cell={({ rowIndex, ...props }) => (
                         <Cell {...props}>
-                            <InputCell text = {data[rowIndex].project} inputHandler={addProject} index={rowIndex}/>
+                            <InputCell loaded = {loaded} text = {data[rowIndex].project} inputHandler={addProject} index={rowIndex}/>
                         </Cell>
                     )}
                     width={300}
@@ -35,8 +41,8 @@ const EmployeeTable = ({data, addName, addProject, changeStatus, statuses}) => {
                 <Column
                     header={<Cell>Статус</Cell>}
                     cell={({ rowIndex, ...props }) => (
-                        <Cell {...props} text = {data[rowIndex].status} onClick = {() => setClick(!isClicked)} id={rowIndex} style ={{textAlign: 'center'}} >
-                             {!isClicked ? data[rowIndex].status : <StatusModal inputHandler = {changeStatus} statuses = {statuses}/>}
+                        <Cell {...props} text = {data[rowIndex].status} onClick = {() => setClick(true)} id={rowIndex} className ={s.cell_status} >
+                             {!isClicked  ? data[rowIndex].status : <StatusModal inputHandler = {changeStatus} statuses = {statuses} setClick={setClick}/>}
                         </Cell>
                     )}
                     width={300}

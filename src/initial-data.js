@@ -1,30 +1,30 @@
-const initialData = {
+let initialData = {
     data: [
         {
-            name: 'Maxim Moiseev',
-            project: 'Employee Table',
-            status: 'Идет',
+            name: ' ',
+            project: ' ',
+            status: ' ',
             months: {
                 January: {
-                    business: [40, 20, 40, 30],
+                    business: ['', '', '', ''],
                     isConfirmed: true
                     // true = confirmed, false = not confirmed, null = downtime
                 },
                 February: {
-                    business: [20, 20, 20, 20],
-                    isConfirmed: 'Неподтвержден'
+                    business: ['', '', '', ''],
+                    isConfirmed: null
                 },
                 March: {
-                    business: [40, 40, 40, 40],
-                    isConfirmed: 'Неподтвержден'
+                    business: ['', '', '', ''],
+                    isConfirmed: null
                 },
                 April: {
-                    business: [20, 30, 30, 30, 40],
-                    isConfirmed: 'Подтвержден'
+                    business: ['', '', '', ''],
+                    isConfirmed: null
                 },
                 May: {
-                    business: [20, 20, 20, 20],
-                    isConfirmed: 'Простой'
+                    business: ['', '', '', ''],
+                    isConfirmed: null
                 },
                 June: {
                     business: ['', '', '', ''],
@@ -56,117 +56,6 @@ const initialData = {
                 }
             }
         },
-        {
-            name: 'Valery Pronin',
-            project: 'Employee Table',
-            status: 'Согласован старт',
-            months: {
-                January: {
-                    business: [20, 40, 40, 40],
-                    isConfirmed: 'Подтвержден'
-                    // true = confirmed, false = not confirmed, null = downtime
-                },
-                February: {
-                    business: [40, 40, 40, 40],
-                    isConfirmed: 'Подтвержден'
-                },
-                March: {
-                    business: [30, 40, 40,30],
-                    isConfirmed: 'Подтвержден'
-                },
-                April: {
-                    business: [20, 20, 20, 20, 20],
-                    isConfirmed: 'Неподтвержден'
-                },
-                May: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                June: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                July: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                August: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                September: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                October: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                November: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                },
-                December: {
-                    business: ['', '', '', ''],
-                    isConfirmed: 'Простой'
-                }
-            }
-        },
-        {
-            name: 'Darya Dushkina',
-            project: 'Being nice',
-            status: 'Завершается',
-            months: {
-                January: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                },
-                February: {
-                    business: [40, 40, 40, 40],
-                    isConfirmed: 'Подтвержден'
-                },
-                March: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                },
-                April: {
-                    business: [40, 40, 40, 40, 40],
-                    isConfirmed: 'Подтвержден'
-                },
-                May: {
-                    business: [30, 40, 40, 40],
-                    isConfirmed: 'Неподтвержден'
-                },
-                June: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                },
-                July: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                },
-                August: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                },
-                September: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                },
-                October: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                },
-                November: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                },
-                December: {
-                    business: ['', '', '', ''],
-                    isConfirmed: null
-                }
-            }
-        }
     ],
 
     calendar: {
@@ -220,9 +109,9 @@ const initialData = {
         }
     },
     colors: [
-        {name: 'Простой', color: [223, 121, 124]},
-        {name: 'Неподтвержден', color: [127, 148, 221]},
-        {name: 'Подтвержден', color: [113, 190, 108]}
+        { name: 'Простой', color: [223, 121, 124] },
+        { name: 'Неподтвержден', color: [127, 148, 221] },
+        { name: 'Подтвержден', color: [113, 190, 108] }
     ],
     statuses: ['Идет', 'Согласован старт', 'Завершается']
 }

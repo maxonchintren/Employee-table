@@ -1,12 +1,14 @@
 import React from 'react'
 
+import s from './UI.module.css' 
+
 const InputCell = ({text , inputHandler, index, columnKey, month}) => {
-    let [value, setValue] = React.useState(text)
+    const [value, setValue] = React.useState(text)
+
 
     function saveInput(event) {
         if (event.key === 'Enter') {
             let target = event.target
-            onChange(event)
             inputHandler(value, index, columnKey, month)
             target.style.background = 'rgba(52, 163, 46, 0.2)';
             setTimeout(() => {
@@ -20,19 +22,8 @@ const InputCell = ({text , inputHandler, index, columnKey, month}) => {
         setValue(event.target.value)
     }
 
-    const style = {
-        background: 'transparent',
-        width: '90%',
-        height: '50px',
-        border: 'none',
-        padding: '10px 3px',
-        fontSize: 'inherit',
-        textAlign: 'center',
-        margin: '0 auto'
-    }
-
     return (
-        <input style = {style} value = {value} onKeyPress = {saveInput} onChange = {onChange}></input>
+        <input className = {s.input_cell} value = {value} onKeyPress = {saveInput} onChange = {onChange} ></input>
     )
 }
 
