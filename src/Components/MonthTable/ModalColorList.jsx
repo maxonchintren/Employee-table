@@ -2,7 +2,12 @@ import React from 'react'
 
 import s from './Month.module.css'
 
-const ModalColorList = ({ colors, closeFunc, addFunc, deleteFunc }) => {
+const ModalColorList = ({
+  colors,
+  closeModal,
+  handleAddBtnClick,
+  handleDelBtnClick,
+}) => {
   const [value, setValue] = React.useState('')
   const [newColorName, setNewColor] = React.useState('')
 
@@ -10,7 +15,7 @@ const ModalColorList = ({ colors, closeFunc, addFunc, deleteFunc }) => {
     let target = event.target.parentElement.parentElement
     target.style.transform = 'scale(0.01, 0.01)'
     setTimeout(() => {
-      closeFunc()
+      closeModal()
     }, 170)
   }
 
@@ -34,7 +39,7 @@ const ModalColorList = ({ colors, closeFunc, addFunc, deleteFunc }) => {
                 <button
                   className={s.button}
                   key={index}
-                  onClick={() => deleteFunc(index)}
+                  onClick={() => handleDelBtnClick(index)}
                 >
                   &times;
                 </button>
@@ -61,7 +66,7 @@ const ModalColorList = ({ colors, closeFunc, addFunc, deleteFunc }) => {
           />
           <button
             className={s.addBtn}
-            onClick={e => addFunc(value, newColorName, setValue, e)}
+            onClick={e => handleAddBtnClick(value, newColorName, setValue, e)}
           >
             Добавить в список (формат RGB)
           </button>

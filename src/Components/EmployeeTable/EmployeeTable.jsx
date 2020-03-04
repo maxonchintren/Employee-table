@@ -10,14 +10,12 @@ import s from './Employee.module.css'
 
 const EmployeeTable = ({
   data,
-  addName,
-  addProject,
+  changeEmployeeName,
+  changeEmployeesProject,
   changeStatus,
   statuses,
   loaded,
 }) => {
-
-
   return (
     <div className={s.employee_table_container}>
       <Table
@@ -34,7 +32,7 @@ const EmployeeTable = ({
               <InputCell
                 loaded={loaded}
                 text={data[rowIndex].name}
-                inputHandler={addName}
+                inputHandler={changeEmployeeName}
                 index={rowIndex}
               />
             </Cell>
@@ -48,7 +46,7 @@ const EmployeeTable = ({
               <InputCell
                 loaded={loaded}
                 text={data[rowIndex].project}
-                inputHandler={addProject}
+                inputHandler={changeEmployeesProject}
                 index={rowIndex}
               />
             </Cell>
@@ -61,7 +59,6 @@ const EmployeeTable = ({
             <Cell
               {...props}
               text={data[rowIndex].status}
-              // onClick={() => setClick(true)}
               id={rowIndex}
               className={s.cell_status}
             >

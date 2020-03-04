@@ -2,14 +2,19 @@ import React from 'react'
 
 import s from './Employee.module.css'
 
-const ModalStatusList = ({ statuses, closeFunc, addFunc, deleteFunc }) => {
+const ModalStatusList = ({
+  statuses,
+  closeModal,
+  handleAddBtnClick,
+  handleDelBtnClick,
+}) => {
   const [value, setValue] = React.useState('')
 
   function closeHandler(event) {
     let target = event.target.parentElement.parentElement
     target.style.transform = 'scale(0.01, 0.01)'
     setTimeout(() => {
-      closeFunc()
+      closeModal()
     }, 170)
   }
 
@@ -21,7 +26,10 @@ const ModalStatusList = ({ statuses, closeFunc, addFunc, deleteFunc }) => {
             return (
               <div className={s.statusesCont} key={index}>
                 <span className={s.span}>{status}</span>
-                <button className={s.button} onClick={() => deleteFunc(index)}>
+                <button
+                  className={s.button}
+                  onClick={() => handleDelBtnClick(index)}
+                >
                   &times;
                 </button>
               </div>
@@ -38,7 +46,7 @@ const ModalStatusList = ({ statuses, closeFunc, addFunc, deleteFunc }) => {
           />
           <button
             className={s.addBtn}
-            onClick={e => addFunc(value, setValue, e)}
+            onClick={e => handleAddBtnClick(value, setValue, e)}
           >
             Добавить в список
           </button>

@@ -2,9 +2,9 @@ import React from 'react'
 
 import s from './UI.module.css'
 
-const Button = ({ text, type, handler }) => {
+const Button = ({ text, type, handleClick }) => {
   return (
-    <button className={s[type]} onClick={handler}>
+    <button className={s[type]} onClick={handleClick}>
       {text}
     </button>
   )

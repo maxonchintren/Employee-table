@@ -13,8 +13,8 @@ import { addEmployee, getData, postData } from './Utilities/handlers'
 function App() {
   let date = new Date()
   const [loaded, setLoaded] = React.useState(false)
-  const [isClickedStatus, setClickStatus] = React.useState(false)
-  const [isClickedColor, setClickColor] = React.useState(false)
+  const [showStatusWin, setShowStatusWin] = React.useState(false)
+  const [showColorWin, setShowColorWin] = React.useState(false)
   const [statuses, setStatuses] = React.useState(initialData.statuses)
   const [employees, setEmployees] = React.useState(initialData.data)
   const [colors, setColors] = React.useState(initialData.colors)
@@ -36,11 +36,11 @@ function App() {
     }
   }, [statuses, employees, colors, loaded])
 
-  function addBtnHandler() {
+  function addEmployeeBtnHandler() {
     return addEmployee(employees, setEmployees)
   }
 
-  function addName(value, id) {
+  function changeEmployeeName(value, id) {
     setEmployees(
       employees.map((employee, index) => {
         if (index === +id) {
@@ -52,7 +52,7 @@ function App() {
     console.log(employees)
   }
 
-  function addProject(value, id) {
+  function changeEmployeesProject(value, id) {
     setEmployees(
       employees.map((employee, index) => {
         if (index === +id) {
@@ -153,8 +153,8 @@ function App() {
       <div className="app_container">
         <EmployeeTable
           data={employees}
-          addName={addName}
-          addProject={addProject}
+          changeEmployeeName={changeEmployeeName}
+          changeEmployeesProject={changeEmployeesProject}
           changeStatus={changeStatus}
           statuses={statuses}
           loaded={loaded}
@@ -178,36 +178,36 @@ function App() {
         <Button
           text="Добавить сотрудника"
           type="addEmp"
-          handler={addBtnHandler}
+          handleClick={addEmployeeBtnHandler}
         ></Button>
         <Button
           text="Список статусов"
           type="editStatus"
-          handler={() => setClickStatus(!isClickedStatus)}
+          handleClick={() => setShowStatusWin(!showStatusWin)}
         ></Button>
-        {!isClickedStatus ? (
+        {!showStatusWin ? (
           ''
         ) : (
           <ModalStatusList
             statuses={statuses}
-            closeFunc={() => setClickStatus(!isClickedStatus)}
-            addFunc={addStatusInList}
-            deleteFunc={deleteStatusInList}
+            closeModal={() => setShowStatusWin(!showStatusWin)}
+            handleAddBtnClick={addStatusInList}
+            handleDelBtnClick={deleteStatusInList}
           />
         )}
         <Button
           text="Список цветов"
           type="editColor"
-          handler={() => setClickColor(!isClickedColor)}
+          handleClick={() => setShowColorWin(!showColorWin)}
         />
-        {!isClickedColor ? (
+        {!showColorWin ? (
           ''
         ) : (
           <ModalColorList
             colors={colors}
-            closeFunc={() => setClickColor(!isClickedColor)}
-            addFunc={addColorInList}
-            deleteFunc={deleteColorInList}
+            closeModal={() => setShowColorWin(!showColorWin)}
+            handleAddBtnClick={addColorInList}
+            handleDelBtnClick={deleteColorInList}
           />
         )}
       </div>

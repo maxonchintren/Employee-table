@@ -17,7 +17,7 @@ const MonthTable = ({
   changeColor,
   loaded,
 }) => {
-  const [isClicked, setClick] = React.useState(false)
+  const [showColorSelection, setShowColorSelection] = React.useState(false)
   let styles = {}
 
   colors.map(color => {
@@ -30,7 +30,7 @@ const MonthTable = ({
 
   function contextHandler(event) {
     event.preventDefault()
-    setClick(!isClicked)
+    setShowColorSelection(!showColorSelection)
   }
 
   return (
@@ -77,7 +77,7 @@ const MonthTable = ({
                         className={s.input_cell}
                         loaded={loaded}
                       />
-                      {isClicked && columnKey === 0 ? (
+                      {showColorSelection && columnKey === 0 ? (
                         <ColorModal
                           colors={colors}
                           index={rowIndex - 1}
