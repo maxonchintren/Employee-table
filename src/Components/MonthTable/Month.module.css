@@ -1,153 +1,152 @@
 .month_table_container {
-    display: flex;
+  display: flex;
 }
 
 .input_cell {
-    position: relative;
+  position: relative;
 }
 
 .week_cell {
-    text-align: center;
+  text-align: center;
 }
 
 /* MODAL COLOR LIST */
 .outerContainer {
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, .5);
-    z-index: 999;
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
-    width: 600px;
-    padding: 20px 30px;
-    background: #fff;
-    display: flex;
-    box-shadow: -1px 3px 40px 0px rgba(0,0,0,0.98);
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    border: none;
-    transition: 0.2s;
+  width: 600px;
+  padding: 20px 30px;
+  background: #fff;
+  display: flex;
+  box-shadow: -1px 3px 40px 0px rgba(0, 0, 0, 0.98);
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border: none;
+  transition: 0.2s;
 }
 
 .innerContainer {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    border-right: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  border-right: 1px solid #ccc;
 }
 .innerContainer:last-child {
-    border-right: none;
+  border-right: none;
 }
 
 .span {
-    margin: 15px 0;
-    width: 35%;
+  margin: 15px 0;
+  width: 35%;
 }
 
 .button {
-    margin: 15px 0;
-    background: #fff;
-    color: #ccc;
-    border-radius: 85%;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    transition: 0.2s;
+  margin: 15px 0;
+  background: #fff;
+  color: #ccc;
+  border-radius: 85%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.2s;
 }
 .button:hover {
-    background: rgb(231, 75, 75);
-    color: white;
+  background: rgb(231, 75, 75);
+  color: white;
 }
 .button:focus {
-    outline: none;
+  outline: none;
 }
 
 .exit {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    padding: 0 10px;
-    font-size: 20px;
-    cursor: pointer;
-    background: #fff;
-    color: #ccc;
-    transition: 0.2s;
-    border: 1px solid #ccc;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 0 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background: #fff;
+  color: #ccc;
+  transition: 0.2s;
+  border: 1px solid #ccc;
 }
 .exit:hover {
-    background: rgba(0, 0, 0, .8);
-    color: white;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 .colorsCont {
-    display: flex;
-    align-items: center;
-    justify-content:space-evenly;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .input {
-    width: 70%;
-    margin: 15px auto;
-    height: 25px;
-    font-size: 17px;
-    border: none;
-    border-bottom: 2px solid #ccc;
-    transition: .2s;
+  width: 70%;
+  margin: 15px auto;
+  height: 25px;
+  font-size: 17px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  transition: 0.2s;
 }
 .input:focus {
-    outline: none;
-    height: 30px;
-    border-bottom: 2px solid rgba(60, 222, 240, 0.5);
+  outline: none;
+  height: 30px;
+  border-bottom: 2px solid rgba(60, 222, 240, 0.5);
 }
 
 .addBtn {
-    width: 60%;
-    padding: 10px 20px;
-    margin: 20px auto;
-    background: #fff;
-    color: #000;
-    border: 2px solid #ccc;
-    font-size: 15px;
-    cursor: pointer;
-    transition: .2s;
+  width: 60%;
+  padding: 10px 20px;
+  margin: 20px auto;
+  background: #fff;
+  color: #000;
+  border: 2px solid #ccc;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 .addBtn:hover {
-    border: 2px solid rgba(60, 222, 240, 0.5)
+  border: 2px solid rgba(60, 222, 240, 0.5);
 }
 .addBtn:focus {
-    transform: scale(1.1,1.1);
-    outline: none;
+  transform: scale(1.1, 1.1);
+  outline: none;
 }
 
 /* COLOR MODAL */
 .colormodal_container {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 100px;
-    position: absolute;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 100px;
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
 }
 
 .colormodal_button {
-    width: 100%;
-    font-size: 12px;
-    height: 18px;
-    padding: 2px 0;
-    margin: 0 auto;
-    border: none;
-    cursor: pointer;
-    background: #fff;
+  width: 100%;
+  font-size: 12px;
+  height: 18px;
+  padding: 2px 0;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  background: #fff;
 }
